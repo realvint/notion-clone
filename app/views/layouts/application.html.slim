@@ -17,6 +17,5 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-  body
-    main class="container mx-auto mt-28 px-5 flex"
-      = yield
+  body.h-full
+    = yield(:main).presence || yield
