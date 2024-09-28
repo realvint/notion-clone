@@ -1,0 +1,15 @@
+= form_with model: @user, url: login_path, class: 'flex flex-col space-y-4 border rounded-lg px-10 py-8 bg-white' do |f|
+  - if flash[:error].present?
+    .p-4.border.border-red-700.rounded.bg-red-50.text-center
+      .text-red-500 = flash[:error]
+
+  = f.label :email
+  = f.email_field :email, value: params[:email]
+
+  = f.label :password, 'Пароль'
+  = f.password_field :password, value: params[:password]
+
+  br
+  br
+  = f.submit 'Login'
+  = link_to 'Sign up &rarr;'.html_safe, sign_up_path, class: 'text-center'
