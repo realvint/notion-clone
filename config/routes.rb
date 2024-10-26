@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "sessions/new"
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/*
@@ -13,5 +12,8 @@ Rails.application.routes.draw do
   post :login, to: 'sessions#create'
   delete :logout, to: 'sessions#destroy'
 
-  root "home#index"
+  resources :pages
+  resources :workspaces
+
+  root "pages#index"
 end

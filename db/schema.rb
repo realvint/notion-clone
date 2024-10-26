@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_22_192328) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_28_200859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pages", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.boolean "frontpage", default: false
+    t.string "ancestry", default: "/"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pages_on_user_id"
+    t.index ["workspace_id"], name: "index_pages_on_workspace_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -20,4 +32,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_22_192328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workspaces_on_user_id"
+  end
+
+  add_foreign_key "pages", "users"
+  add_foreign_key "pages", "workspaces"
+  add_foreign_key "workspaces", "users"
 end

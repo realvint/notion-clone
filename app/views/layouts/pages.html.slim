@@ -1,0 +1,8 @@
+= content_for :main do
+  .flex.h-full
+    .lefcol.bg-stone-100 class="w-[240px]"
+      p Menu
+    .flex-1
+      = yield
+
+= render template: 'layouts/application'
