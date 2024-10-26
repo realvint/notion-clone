@@ -1,24 +1,38 @@
-# README
+# Notion clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Software versions:
+* Ruby 3.3.0
+* Rails 7.2.1
+* PostgreSQL 16.0
 
-Things you may want to cover:
+## Start project
+1. Set up local environment (Ruby, etc.)
+2. Download or clone a repository
+3. Run bundler to install required gems and dependencies
 
-* Ruby version
+```bash
+$ bundle install
+```
 
-* System dependencies
+If necessary, you can run PostgreSQL and Redis locally using [Docker](https://docker.com)
 
-* Configuration
+Make sure you are using [Docker Compose V2](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+```
+% docker compose version
+Docker Compose version v2.3.3
+```
 
-* Database creation
+`docker-compose.yml` configured to run PostgreSQL 16.0
+```bash
+$ docker compose up -d
+```
+4. Create and set up a database for the project
+```bash
+$ rails db:prepare
+```
+5. Start project
+```bash
+$ bin/dev
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### The project is available at the link http://localhost:3000/
